@@ -1,0 +1,21 @@
+name: simplefolio
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      # Runs the specified commands commands to get Ultraviolet-Node running.
+      - name: run ultraviolet
+        run: |
+          git clone https://github.com/fmkash/simplefolio --recursive
+          cd simplefolio
+          npm install
+          screen -dm npm start
+      - name: install needed code
+        run: |
+          npm install && npm start
+      - name: sleep
+        run: sleep 999999999
